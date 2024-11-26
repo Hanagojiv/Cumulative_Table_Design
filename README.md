@@ -77,6 +77,7 @@ CREATE TYPE scoring_class AS ENUM ('star', 'good', 'average', 'bad');
 
 
 •	`season_stats`: Stores structured metrics for each season.
+
 •	`scoring_class`: Categorizes players based on their performance.
 
 ```sql
@@ -185,6 +186,17 @@ SELECT player_name, (season_stats::season_stats).* FROM unnested;
 - **Flattening Structs**:
 	- The `(season_stats::season_stats).*` syntax extracts fields from the `season_stats` struct into separate columns (e.g., `season`, `pts`, `ast`, etc.).
 	- This query allows for detailed analysis of each season’s statistics for a specific player (e.g., Michael Jordan).
+
+Below is a visual representation of the cumulative table design, showcasing how historical data is stored and updated incrementally:
+
+![Cumulative Table Design](Season_stats_cumulative.png)
+
+> **Path to the image**: `/Users/vivekhanagoji/Documents/DataEngineer_BootCamp/Lab_Files/Season_stats_cumulative.png`
+
+This image illustrates the structure of the cumulative table, including:
+- The use of arrays to store historical data.
+- How incremental updates append new season statistics while preserving past records.
+- The overall design that supports efficient querying and analytics.
 
 ## **Conclusion** 🎯
 
