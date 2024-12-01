@@ -1,6 +1,6 @@
 SELECT * FROM public.player_seasons;
 
--- 
+--
 CREATE TYPE season_stats as(
 
 			season Integer,
